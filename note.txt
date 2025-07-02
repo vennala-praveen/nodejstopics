@@ -1,0 +1,17 @@
+Node JS ----------------------- Node JS provides runtime enviroment for Javascript
+built on google v8 JavaScript Engine
+
+google --- v8
+Firebox --- Spider Monkey
+Internet Explore --- Chakra
+
+Module export and import node JS
+
+File system modules in Node JS
+
+1. How to read file content
+2. how to write into file
+3. How to update file content
+4. How to rename a file
+5. How to delete a file
+6. How to create/read/delete a folder/Directory
