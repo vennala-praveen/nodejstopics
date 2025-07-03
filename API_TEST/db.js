@@ -9,15 +9,27 @@ const sql = require('mysql2');
     }
 )
 
-function getMobiles(){
+function getMobiles(id){
     return new Promise(function(success, reject){
-        con.query(`SELECT * FROM mobile`,(err,rows,col)=>{
+        if(id){
+            con.query(`SELECT * FROM mobile WHERE id=?`,[id],(err,rows,col)=>{
         if(err){
-            reject("error");
+            reject(500); //500
         }else{
             success(rows);
         }
-    })
+        })
+
+        }else{
+            con.query(`SELECT * FROM mobile`,(err,rows,col)=>{
+        if(err){
+            reject(500); //500
+        }else{
+            success(rows);
+        }
+         })
+
+        }
     })
 }
 
@@ -26,7 +38,7 @@ function addMobile(b,m,p,s,ram,batt,release_year,in_stock){
         con.query(
         `INSERT INTO mobile(brand,model,price,storage,ram,battery,release_year,in_stock) VALUES(?,?,?,?,?,?,?,?)`,[b,m,p,s,ram,batt,release_year,in_stock], function(err,rows, col){
             if(err){
-                reject("Error");
+                reject(500); //500
             }else{
                 success(rows);
             }
@@ -41,7 +53,7 @@ function updateMobile(id,b,m,p,s,ram,batt,release_year,in_stock){
         con.query(
         `UPDATE mobile SET brand=?, model=?, price=?, storage=?, ram=?, battery=?, release_year=?, in_stock=? WHERE id=?`, [b,m,p,s,ram,batt,release_year,in_stock,id], function(err,rows,col){
             if(err){
-                reject("Error");
+                reject(500); //500
             }else{
                 success(rows);
             }
@@ -53,15 +65,24 @@ function updateMobile(id,b,m,p,s,ram,batt,release_year,in_stock){
 
 function deleteMobile(id){
     return new Promise(function(success, reject){
-        con.query(
-        `DELETE mobile WHERE id=?`,[id], function(err,rows){
+        getMobiles(id)
+        .then((rows)=>{
+            if(rows.length > 0){
+                con.query(`DELETE FROM mobile WHERE id=?`,[id], function(err,rows){
             if(err){
-                reject("Error");
+                reject(500); //500
             }else{
                 success(rows);
             }
-        }
-    )
+            })
+          }
+
+          else{
+            reject(404)
+          }
+
+
+        })
     })
 }
 

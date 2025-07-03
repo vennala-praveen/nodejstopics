@@ -18,8 +18,8 @@ app.get('/mobile',(req,res)=>{
         res.send(mobile)
     })
 
-    .catch(()=>{
-        res.send("Error")
+    .catch((err)=>{
+        res.send(err)
     })
     
 });
@@ -31,8 +31,8 @@ app.post('/mobile',(req,res)=>{
         res.send(mobile)
     })
 
-    .catch(()=>{
-        res.send("Error")
+    .catch((err)=>{
+        res.send(err)
     })
 });
 
@@ -43,19 +43,19 @@ app.put('/mobile',(req,res)=>{
         res.send(req.body)
     })
 
-    .catch(()=>{
-        res.send("Error")
+    .catch((err)=>{
+        res.send(err)
     })
 });
 
 
 app.delete('/mobile',(req,res)=>{
-    db.deleteMobile()
+    db.deleteMobile(req.body.id)
     .then((mobile)=>{
         res.send(mobile)
     })
 
-    .catch(()=>{
-        res.send("Error")
+    .catch((err)=>{
+        res.send(err)
     })
 });
