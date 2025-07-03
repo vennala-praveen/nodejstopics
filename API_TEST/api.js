@@ -1,5 +1,5 @@
 const express = require('express');
-const mysql = require('mysql');
+const sql = require('mysql');
 
 
 
@@ -10,6 +10,21 @@ app.listen(5000,()=>{
 });
 
 
-app.get('/test',(req,res)=>{
-    res.send("Hello!! Test")
+app.get('/mobile',(req,res)=>{
+    res.send("mobile data success")
+});
+
+
+app.post('/mobile',(req,res)=>{
+    res.send("mobile data success!")
+});
+
+
+app.put('/mobile',(req,res)=>{
+    res.send("mobile data success!!")
+});
+
+
+app.delete('/mobile',(req,res)=>{
+    res.send("mobile data delete")
 });
