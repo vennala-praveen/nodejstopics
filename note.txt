@@ -1,4 +1,4 @@
-Node JS ----------------------- Node JS provides runtime enviroment for Javascript
+Node JS ----------------------- Node JS provides runtime environment for Javascript
 built on google v8 JavaScript Engine
 
 google --- v8
@@ -18,3 +18,5 @@ File system modules in Node JS
 
 
 Rest API's using node JS
+
+Query, path parameters & how to access them in node JS
