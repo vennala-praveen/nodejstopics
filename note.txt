@@ -20,3 +20,12 @@ File system modules in Node JS
 Rest API's using node JS
 
 Query, path parameters & how to access them in node JS
+
+how to create RestApi and using express JS
+
+Prerequisites -- Node JS installed, REST API Client installed (EX: Postman)
+                Any Database server, Any code editor (Ex: VSCode)
+
+npm init -y, npm i express mysql, npm i nodemon
+
+Handling Request --- get, post, put, delete
