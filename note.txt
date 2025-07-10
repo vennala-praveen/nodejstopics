@@ -29,3 +29,5 @@ Prerequisites -- Node JS installed, REST API Client installed (EX: Postman)
 npm init -y, npm i express mysql, npm i nodemon
 
 Handling Request --- get, post, put, delete
+
+Emails using node JS -- nodemailer
