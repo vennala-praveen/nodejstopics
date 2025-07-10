@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    background-color: #fff;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+button{
+    border: #fff;
+    text-align: center;
+    justify-content: center;
+    
+} 
