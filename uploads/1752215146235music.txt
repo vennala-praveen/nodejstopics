@@ -1,0 +1,171 @@
+App.css
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: cornflowerblue;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+h1 {
+  margin-bottom: 40px;
+  font-size: 24px;
+  color: #333;
+  font-weight:bolder;
+  background-color: whitesmoke;
+}
+
+
+App.js----
+
+import './App.css';
+import MusicPlayer from './MusicPlayer';
+
+function App() {
+  return (
+    <>
+      <div className='container'>
+        <h1>Music Player</h1>
+        <MusicPlayer />
+      </div>
+    </>
+  );
+}
+
+export default App;
+
+
+index.css----
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+index.js----
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+musicplayer.css----
+
+.music-player-card {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    text-align: center;
+}
+
+.music-player-card h2 {
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+.track-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+misicplayer.jsx------
+
+
+
+import React, { useState } from 'react';
+import './MusicPlayer.css'
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
+
+import Tauba from './assets/songs/Tauba.mp3';
+import KaiseHua from './assets/songs/KaiseHua.mp3';
+import TaubaImg from './assets/images/tauba.jpg';
+import KaiseHuaImg from './assets/images/kaisehua.jpg';
+
+
+
+const MusicPlayer = () => {
+
+  const [currentIndex, setIndex] = useState(0);
+
+  const tracks = [
+    {
+      songName: 'Tauba Tauba',
+      song: Tauba,
+      songImage: TaubaImg
+    },
+    {
+      songName: 'Kaise Hua',
+      song: KaiseHua,
+      songImage: KaiseHuaImg
+    }
+
+  ];
+
+  const handleClickNext = () => {
+    setIndex((currentIndex + 1) % tracks.length);
+  };
+
+  const handleClickPrevious = () => {
+    setIndex((currentIndex - 1 + tracks.length) % tracks.length);
+  }
+
+  return (
+    <>
+      <div className='music-player-card'>
+        <img className='track-image' src={tracks[currentIndex].songImage} alt='songImage' />
+        <h2> {tracks[currentIndex].songName}</h2>
+        <AudioPlayer
+          src={tracks[currentIndex].song}
+          onPlay={e => console.log("onPlay")}
+          onClickNext={() => { handleClickNext() }}
+          onClickPrevious={() => { handleClickPrevious() }}
+          showSkipControls={true}
+          showJumpControls={false}
+        />
+      </div>
+    </>
+  );
+};
+
+export default MusicPlayer;
+
+react-h5-audio-player npm
+
+npm i react-h5-audio-player
+
+webiNext tech
+
+github.com/bradtraversy
+
+https://github.com/nagakalyanpro/React-E-Mart

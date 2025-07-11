@@ -1,0 +1,31 @@
+def cafe_debate_simulator(menu_items, debate_rounds):
+    debate_counts = {item: 0 for item in menu_items}
+    
+    for _ in range(debate_rounds):
+        for i in range(len(menu_items)):
+            for j in range(i + 1, len(menu_items)):
+                item1, item2 = menu_items[i], menu_items[j]
+                if len(item1) > len(item2):
+                    debate_counts[item1] += 1
+                elif len(item2) > len(item1):
+                    debate_counts[item2] += 1
+                else:
+                    # If lengths are equal, both items get a point
+                    debate_counts[item1] += 1
+                    debate_counts[item2] += 1
+    
+    max_debates = max(debate_counts.values())
+    most_debated = [item for item, count in debate_counts.items() if count == max_debates]
+    
+    if len(most_debated) == 1:
+        return f"The most controversial item is '{most_debated[0]}' with {max_debates} debates!"
+    else:
+        items_str = "', '".join(most_debated[:-1]) + f"' and '{most_debated[-1]}"
+        return f"It's a tie! The most controversial items are '{items_str}' with {max_debates} debates each!"
+villanueva mattie
+
+“Every line of code written is a step closer to mastery. Embrace the mistakes, learn from them, and continue coding with passion and persistence.”
+
+“Code with creativity, debug with patience, and always remember: success in programming is not defined by perfection, but by progress and perseverance.”
+
+I come from a humble middle-class background, which has instilled in me values of hard work, perseverance, and gratitude. I take pride in being a good-hearted person who values kindness and integrity in all aspects of life. My daily routine reflects my passion for self-improvement and personal growth—I dedicate time to reading books to expand my knowledge, coding to hone my technical skills, and playing games to relax and recharge. These activities not only bring balance to my life but also fuel my creativity and curiosity. I believe in constantly learning and growing, striving to be the best version of myself every day.
